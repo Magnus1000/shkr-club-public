@@ -1,21 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM fully loaded. Setting up filter elements...");
 
+    let currentlySelected = null; // Variable to keep track of the currently selected element
+
     function handleFilterClick(e) {
         console.log("Filter item clicked"); // Log when an item is clicked
         var filterId = e.target.getAttribute("data-filter-id"); // Get the filter-preset-id of the clicked element
         console.log(`Clicked item filter ID: ${filterId}`); // Log the filter ID of the clicked item
         console.log(`Clicked item class: ${e.target.className}`); // Log the class of the clicked item
 
-        // Toggle "selected" class on the parent element
-        var parentElement = e.target.parentElement;
-        if (parentElement.classList.contains("selected")) {
-            parentElement.classList.remove("selected");
-            console.log("Removed 'selected' class from parent element.");
-        } else {
-            parentElement.classList.add("selected");
-            console.log("Added 'selected' class to parent element.");
+        // If there is a previously selected item, remove the "selected" class
+        if (currentlySelected && currentlySelected !== e.target.parentElement) {
+            currentlySelected.classList.remove("selected");
+            console.log("Removed 'selected' class from previously selected element.");
         }
+
+        // Toggle "selected" class on the current item's parent element
+        var parentElement = e.target.parentElement;
+        if (!parentElement.classList.contains("selected")) {
+            parentElement.classList.add("selected");
+            console.log("Added 'selected' class to current element's parent.");
+        }
+
+        // Update the currently selected element
+        currentlySelected = parentElement;
 
         var targetElement = document.querySelector(`[data-preset-id="${filterId}"]`); // Find the target element in the carousel
         if (targetElement) {
@@ -39,5 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (filterElements.length > 0) {
         filterElements[0].parentElement.classList.add("selected");
         console.log("Automatically added 'selected' class to the first filter element's parent.");
+        currentlySelected = filterElements[0].parentElement; // Update the currently selected element
     }
 });
