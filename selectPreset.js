@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded. Setting up filter elements...");
+
     // Function to handle clicking on filter elements
     function handleFilterClick(e) {
       console.log("Filter item clicked"); // Log when an item is clicked
@@ -17,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Attach event listeners to all filter elements
     var filterElements = document.querySelectorAll("[filter-preset-id]");
+    console.log(`${filterElements.length} filter elements found.`); // Log the number of filter elements found
+
     filterElements.forEach(function (filterElement) {
       filterElement.addEventListener("click", handleFilterClick);
     });
