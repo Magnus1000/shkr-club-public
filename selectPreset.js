@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     // Attach event listeners to all filter elements
-    var filterElements = document.querySelectorAll("[filter-preset-id]");
+    var filterElements = document.querySelectorAll("[data-filter-id]");
     console.log(`${filterElements.length} filter elements found.`); // Log the number of filter elements found
 
     filterElements.forEach(function (filterElement) {
