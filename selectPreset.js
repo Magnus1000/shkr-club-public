@@ -34,4 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
     filterElements.forEach(function (filterElement) {
       filterElement.addEventListener("click", handleFilterClick);
     });
+
+    // Automatically add "selected" class to the parent of the first filter element
+    if (filterElements.length > 0) {
+        filterElements[0].parentElement.classList.add("selected");
+        console.log("Automatically added 'selected' class to the first filter element's parent.");
+    }
 });
