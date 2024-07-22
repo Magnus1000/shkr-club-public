@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     popupAuthor.textContent = authorName;
     popupLink.href = authorLink;
     popupOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Set body overflow to hidden
     document.addEventListener('keydown', handleEscape); // Add escape key listener
   };
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     popupImage.srcset = ''; // Clear the srcset attribute
     popupAuthor.textContent = ''; // Clear the author name
     popupLink.href = '#'; // Clear the link
+    document.body.style.overflow = ''; // Reset body overflow
     document.removeEventListener('keydown', handleEscape); // Remove escape key listener
   };
 
