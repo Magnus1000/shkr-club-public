@@ -4,6 +4,7 @@
   "description": "Your project description",
   "main": "index.js",
   "dependencies": {
-    "cloudinary": "^1.27.1"
+    "cloudinary": "^1.27.1",
+    "cors": "^2.8.5"
   }
 }
